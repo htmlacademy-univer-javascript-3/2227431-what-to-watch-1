@@ -1,26 +1,33 @@
-import FilmCard from '../../components/film-card/film-card';
+import {Film} from '../../types/film';
+import FilmList from '../../components/film-list/film-list';
+import {useNavigate} from 'react-router';
+import {AppRoutes} from '../../components/app/const';
+import {Link} from 'react-router-dom';
 
 type MainPageProps = {
-  errorsCount: number;
-  promoFilm: {
-    title: string;
+  promo: {
+    name: string;
     genre: string;
-    releaseDate: string;
+    released: number;
+    previewImage: string;
+    posterImage: string;
   };
+  films: Film[];
 };
 
-function MainPage({ errorsCount, promoFilm }: MainPageProps): JSX.Element {
+function MainPage({promo, films}: MainPageProps): JSX.Element {
+  const navigate = useNavigate();
+
   return (
     <>
       <section className='film-card'>
         <div className='film-card__bg'>
           <img
-            src='img/bg-the-grand-budapest-hotel.jpg'
-            alt={promoFilm.title}
+            src={promo.previewImage} alt={promo.name}
           />
         </div>
 
-        <h1 className='visually-hidden'>{promoFilm.title}</h1>
+        <h1 className='visually-hidden'>{promo.name}</h1>
 
         <header className='page-header film-card__head'>
           <div className='logo'>
@@ -33,7 +40,9 @@ function MainPage({ errorsCount, promoFilm }: MainPageProps): JSX.Element {
 
           <ul className='user-block'>
             <li className='user-block__item'>
-              <div className='user-block__avatar'>
+              <div className='user-block__avatar'
+                onClick={() => navigate(AppRoutes.MyList)}
+              >
                 <img
                   src='img/avatar.jpg'
                   alt='User avatar'
@@ -43,7 +52,7 @@ function MainPage({ errorsCount, promoFilm }: MainPageProps): JSX.Element {
               </div>
             </li>
             <li className='user-block__item'>
-              <a className='user-block__link' href="#todo">Sign out</a>
+              <Link to={AppRoutes.SignIn} className="user-block__link">Sign out</Link>
             </li>
           </ul>
         </header>
@@ -52,18 +61,18 @@ function MainPage({ errorsCount, promoFilm }: MainPageProps): JSX.Element {
           <div className='film-card__info'>
             <div className='film-card__poster'>
               <img
-                src='img/the-grand-budapest-hotel-poster.jpg'
-                alt={`${promoFilm.title} poster`}
+                src={promo.posterImage}
+                alt={`${promo.name} poster`}
                 width='218'
                 height='327'
               />
             </div>
 
             <div className='film-card__desc'>
-              <h2 className='film-card__title'>{promoFilm.title}</h2>
-              <p className='film-card__meta'>
-                <span className='film-card__genre'>{promoFilm.genre}</span>
-                <span className='film-card__year'>{promoFilm.releaseDate}</span>
+              <h2 className="film-card__title">{promo.name}</h2>
+              <p className="film-card__meta">
+                <span className="film-card__genre">{promo.genre}</span>
+                <span className="film-card__year">{promo.released}</span>
               </p>
 
               <div className='film-card__buttons'>
@@ -148,28 +157,9 @@ function MainPage({ errorsCount, promoFilm }: MainPageProps): JSX.Element {
             </li>
           </ul>
 
-          <div className='catalog__films-list'>
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-            <FilmCard />
-          </div>
+          <FilmList
+            films={films}
+          />
 
           <div className='catalog__more'>
             <button className='catalog__button' type='button'>
