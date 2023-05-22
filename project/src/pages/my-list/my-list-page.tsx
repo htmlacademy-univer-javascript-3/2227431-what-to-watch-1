@@ -1,6 +1,5 @@
 import FilmCard from '../../components/film-card/film-card';
 import {Films} from '../../types/film';
-import {useNavigate} from 'react-router';
 import {AppRoutes} from '../../components/app/const';
 import {useState, MouseEvent} from 'react';
 import {Link} from 'react-router-dom';
@@ -12,9 +11,8 @@ type MyListScreenProps = {
 function MyListPage(props: MyListScreenProps): JSX.Element {
   const {films} = props;
   const favoriteFilms = films.filter((film) => film.isFavorite);
-  const navigate = useNavigate();
 
-  const [, setActiveCard] = useState({});
+  const [activeCard, setActiveCard] = useState({});
   return (
     <div className='user-page'>
       <header className='page-header user-page__head'>
@@ -61,10 +59,10 @@ function MyListPage(props: MyListScreenProps): JSX.Element {
                 onMouseLeave={({target}: MouseEvent<HTMLElement>) => {
                   setActiveCard([{}]);
                 }}
-                onClick={() => navigate(`/films/${film.id}`)}
               >
                 <FilmCard
                   film={film}
+                  isActive={film === activeCard}
                 />
               </article>
             );

@@ -1,5 +1,4 @@
 import {useState, MouseEvent} from 'react';
-import {useNavigate} from 'react-router';
 import {Films} from '../../types/film';
 import FilmCard from '../film-card/film-card';
 
@@ -9,9 +8,8 @@ type FilmListProps = {
 
 function FilmList(props: FilmListProps): JSX.Element {
   const {films} = props;
-  const navigate = useNavigate();
 
-  const [, setActiveCard] = useState({});
+  const [activeCard, setActiveCard] = useState({});
 
   return (
     <div className="catalog__films-list">
@@ -26,11 +24,13 @@ function FilmList(props: FilmListProps): JSX.Element {
             onMouseLeave={({target}: MouseEvent<HTMLElement>) => {
               setActiveCard([{}]);
             }}
-            onClick={() => navigate(`/films/${film.id}`)}
           >
+
             <FilmCard
               film={film}
+              isActive={film === activeCard}
             />
+
           </article>
         );
       })}
