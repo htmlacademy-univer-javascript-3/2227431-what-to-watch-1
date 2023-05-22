@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-
-const Setting = {
-  ERRORS_COUNT: 3,
-};
+import {films} from './mocks/films';
 
 const PromoFilm = {
-  title: 'The Grand Budapest Hotel',
+  name: 'The Grand Budapest Hotel',
   genre: 'Drama',
-  releaseDate: '2014',
+  released: 2014,
+  previewImage: 'img/bg-the-grand-budapest-hotel.jpg',
+  posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
 };
 
 const root = ReactDOM.createRoot(
@@ -18,6 +17,9 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App errorsCount={Setting.ERRORS_COUNT} promoFilm={PromoFilm}/>
+    <App
+      promo={PromoFilm}
+      films={films}
+    />
   </React.StrictMode>,
 );
