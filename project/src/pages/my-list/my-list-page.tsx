@@ -1,4 +1,4 @@
-function MyList(): JSX.Element {
+function MyListPage(): JSX.Element {
   return (
     <div className='user-page'>
       <header className='page-header user-page__head'>
@@ -25,7 +25,7 @@ function MyList(): JSX.Element {
             </div>
           </li>
           <li className='user-block__item'>
-            <a className='user-block__link' href="#">Sign out</a>
+            <a className='user-block__link' href="#todo">Sign out</a>
           </li>
         </ul>
       </header>
@@ -44,7 +44,7 @@ function MyList(): JSX.Element {
               />
             </div>
             <h3 className='small-film-card__title'>
-              <a className='small-film-card__link' href='film-page.html'>
+              <a className='small-film-card__link' href='#todo'>
                 Fantastic Beasts: The Crimes of Grindelwald
               </a>
             </h3>
@@ -60,7 +60,7 @@ function MyList(): JSX.Element {
               />
             </div>
             <h3 className='small-film-card__title'>
-              <a className='small-film-card__link' href='film-page.html'>
+              <a className='small-film-card__link' href='#todo'>
                 Bohemian Rhapsody
               </a>
             </h3>
@@ -197,4 +197,4 @@ function MyList(): JSX.Element {
   );
 }
 
-export default MyList;
+export default MyListPage;
