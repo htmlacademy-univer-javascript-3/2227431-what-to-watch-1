@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from 'react';
 
-const VIDEO_TIMEOUT = 1000;
+const VIDEO_TIMEOUT = 10;
 
 type VideoPlayerProps = {
   previewImage: string;
