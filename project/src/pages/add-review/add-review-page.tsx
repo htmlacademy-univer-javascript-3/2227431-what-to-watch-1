@@ -1,4 +1,4 @@
-function AddReview(): JSX.Element {
+function AddReviewPage(): JSX.Element {
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
@@ -28,7 +28,7 @@ function AddReview(): JSX.Element {
                 </a>
               </li>
               <li className="breadcrumbs__item">
-                <a className="breadcrumbs__link">Add review</a>
+                <a className="breadcrumbs__link" href="#todo">Add review</a>
               </li>
             </ul>
           </nav>
@@ -45,7 +45,7 @@ function AddReview(): JSX.Element {
               </div>
             </li>
             <li className="user-block__item">
-              <a className="user-block__link">Sign out</a>
+              <a className="user-block__link" href="#todo">Sign out</a>
             </li>
           </ul>
         </header>
@@ -197,4 +197,4 @@ function AddReview(): JSX.Element {
   );
 }
 
-export default AddReview;
+export default AddReviewPage;

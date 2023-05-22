@@ -1,4 +1,4 @@
-function Player(): JSX.Element {
+function PlayerPage(): JSX.Element {
   return (
     <div className='player'>
       <video
@@ -45,4 +45,4 @@ function Player(): JSX.Element {
   );
 }
 
-export default Player;
+export default PlayerPage;
