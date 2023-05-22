@@ -1,6 +1,5 @@
 import {Film} from '../../types/film';
 import FilmList from '../../components/film-list/film-list';
-import {useNavigate} from 'react-router';
 import {AppRoutes} from '../../components/app/const';
 import {Link} from 'react-router-dom';
 
@@ -16,7 +15,6 @@ type MainPageProps = {
 };
 
 function MainPage({promo, films}: MainPageProps): JSX.Element {
-  const navigate = useNavigate();
 
   return (
     <>
@@ -40,15 +38,10 @@ function MainPage({promo, films}: MainPageProps): JSX.Element {
 
           <ul className='user-block'>
             <li className='user-block__item'>
-              <div className='user-block__avatar'
-                onClick={() => navigate(AppRoutes.MyList)}
-              >
-                <img
-                  src='img/avatar.jpg'
-                  alt='User avatar'
-                  width='63'
-                  height='63'
-                />
+              <div className='user-block__avatar'>
+                <Link to={AppRoutes.MyList}>
+                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                </Link>
               </div>
             </li>
             <li className='user-block__item'>
